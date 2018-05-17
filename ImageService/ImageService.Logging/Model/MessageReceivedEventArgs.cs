@@ -16,5 +16,23 @@ namespace ImageService.Logging.Model
             this.Status = i_Status;
             this.Message = i_Message;
         }
+
+        public string hashMessageType(MessageTypeEnum i_Type)
+        {
+            if (MessageTypeEnum.INFO == i_Type)
+            {
+                return "INFO";
+            }
+
+            else if (MessageTypeEnum.WARNING == i_Type)
+            {
+                return "WARNING";
+            }
+
+            else
+            {
+                return "FAIL";
+            }
+        }
     }
 }

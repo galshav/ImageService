@@ -14,7 +14,7 @@ namespace ImageService.Server
     public class ImageServer
     {
         #region Members
-        private IImageController m_controller = null;
+        private IImageController m_Controller = null;
         private ILoggingService m_Logger = null;
         private List<DirectoyHandler> m_DirectoriesHandlers = null;
         #endregion
@@ -26,7 +26,7 @@ namespace ImageService.Server
         public ImageServer(IImageController i_Controller ,ILoggingService i_Logger)
         {
             m_Logger = i_Logger;
-            m_controller = i_Controller;
+            m_Controller = i_Controller;
             m_DirectoriesHandlers = new List<DirectoyHandler>();
 
             bool result = false;
@@ -34,7 +34,7 @@ namespace ImageService.Server
             string[] directories = watchedDirectories.Split(';');
             foreach (string path in directories)
             {
-                DirectoyHandler directoryHandler = new DirectoyHandler(path, m_controller, this ,m_Logger);
+                DirectoyHandler directoryHandler = new DirectoyHandler(path, m_Controller, this ,m_Logger);
                 m_DirectoriesHandlers.Add(directoryHandler);
                 directoryHandler.StartHandleDirectory();
             }

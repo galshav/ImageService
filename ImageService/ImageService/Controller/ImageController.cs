@@ -16,13 +16,14 @@ namespace ImageService.Controller
         private ILoggingService m_Logger = null;
         private Dictionary<int, ICommand> m_Commands = null;
 
-        public ImageController(IImageServiceModel i_Model, ILoggingService i_Logger)
+        public ImageController(IImageServiceModel i_Model , ILoggingService i_Logger)
         {
             m_Logger = i_Logger;
             m_Model = i_Model;
             m_Commands = new Dictionary<int, ICommand>()
             {
-                { 1, new NewFileCommand(m_Model, m_Logger) }
+                { 1, new NewFileCommand(m_Model, m_Logger) },
+                { 2, new GetSettingsCommand(m_Model, m_Logger) }
             };
         }
 
